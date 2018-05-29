@@ -7,14 +7,14 @@ public class VirtualPet {
 	private String name;
 	private String description;
 	private int hunger;
-	private int hungerIncrease = 3;
+	private int hungerIncrease = 5;
 	private int hungerMultiplier = ThreadLocalRandom.current().nextInt(1, 4);
 	private int thirst;
 	private int thirstIncrease = 4;
 	private int thirstMultiplier = ThreadLocalRandom.current().nextInt(1, 4);
 	private int boredom;
-	private int boredomIncrease = 5;
-	private int boredomMultiplier = ThreadLocalRandom.current().nextInt(1, 4);
+	private int boredomIncrease = 3;
+	private int boredomMultiplier = ThreadLocalRandom.current().nextInt(1, 5);
 
 	public String getName() {
 		return name;
@@ -71,5 +71,11 @@ public class VirtualPet {
 		boredom += boredomIncrease * boredomMultiplier;
 	}
 
-
+	public String toString() {
+		return name + "\t\t |" + hunger + "\t\t |" + thirst + "\t\t |" + boredom;
+	}
+	
+	public String descriptionsToString() {
+		return name + description;
+	}
 }

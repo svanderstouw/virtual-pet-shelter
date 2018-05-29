@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VirtualPetShelter {
-	
-	Map<String, VirtualPet> pets = new HashMap<>();
 
-	public void add(VirtualPet pet) {
-		pets.put(pet.getName(), pet);		
+	Map<String, VirtualPet> pets = new HashMap<String, VirtualPet>();
+		
+	public void addPet(VirtualPet pet) {
+		pets.put(pet.getName(), pet);
 	}
 
 	public VirtualPet findPet(String petName) {
@@ -20,8 +20,53 @@ public class VirtualPetShelter {
 		return pets.values();
 	}
 
-	public void remove(VirtualPet pet) {
+	public void removePet(VirtualPet pet) {
 		pets.remove(pet.getName(), pet);
 	}
 
+	public void feedAllPets(int feedAmount) {
+		Collection<VirtualPet> allPets = pets.values();
+		for (VirtualPet pet : allPets) {
+			pet.feed(feedAmount);
+		}
+	}
+
+	public void waterAllPets(int waterAmount) {
+		Collection<VirtualPet> allPets = pets.values();
+		for (VirtualPet pet : allPets) {
+			pet.water(waterAmount);
+		}
+	}
+
+	public void playWithOnePet(String petName, int playAmount) {
+		VirtualPet retrievedPet = pets.get(petName);
+		retrievedPet.play(playAmount);
+	}
+
+	public void tickAllPets() {
+		Collection<VirtualPet> allPets = pets.values();
+		for (VirtualPet pet : allPets) {
+			pet.tick();
+		}
+
+	}
+	
+	public void showPetStats() {
+		Collection<VirtualPet> allPets = pets.values();
+		System.out.println("This is the status of your dogs:");
+		System.out.println();
+		System.out.println("Name \t\t |Hunger \t |Thirst \t |Boredom");
+		System.out.println("-----------------|---------------|---------------|---------------");
+		for (VirtualPet pet : allPets) {
+			System.out.println(pet.toString());
+		}
+	}
+
+	public void showPetDescriptions() {
+		Collection<VirtualPet> allPets = pets.values();
+		System.out.println();
+		for (VirtualPet pet : allPets) {
+			System.out.println(pet.descriptionsToString());
+		}
+	}
 }
