@@ -66,9 +66,10 @@ public class VirtualPetShelterApp {
 				System.out.println("Which dog would you like to play with?");
 				System.out.print("> ");
 				String petName = input.nextLine();
+				String formattedPetName = myShelter.formatPetName(petName);
 				myShelter.tickAllPets();
-				myShelter.playWithOnePet(petName, 100);
-				System.out.println("You played with " + petName);				
+				myShelter.playWithOnePet(formattedPetName, 100);
+				System.out.println("You played with " + formattedPetName);				
 				break;
 			case "4":
 				System.out.println();
@@ -78,9 +79,10 @@ public class VirtualPetShelterApp {
 				System.out.println("Which dog would you like to adopt?");
 				System.out.print("> ");
 				petName = input.nextLine();
-				VirtualPet retrievedPet = myShelter.findPet(petName);
-				myShelter.removePet(retrievedPet);
-				System.out.println("You adopted " + petName + ".");
+				formattedPetName = myShelter.formatPetName(petName);
+				VirtualPet retrievedPet = myShelter.findPet(formattedPetName);
+				myShelter.adoptPet(retrievedPet);
+				System.out.println("You adopted " + formattedPetName + ".");
 				myShelter.tickAllPets();
 				break;
 			case "5":
@@ -88,13 +90,14 @@ public class VirtualPetShelterApp {
 				System.out.println("You'd like to admit a new dog.  Please input the following information:");
 				System.out.print("Dog's name: ");
 				String newDogName = input.nextLine();
-				System.out.print("Fun fact about the dog: " + newDogName + "... ");
+				String newDogNameFormatted = myShelter.formatPetName(newDogName);
+				System.out.print("Fun fact about the dog: " + newDogNameFormatted + "... ");
 				String newDogDescription = input.nextLine();
 				newDogDescription = " " + newDogDescription;
 				int newDogHunger = ThreadLocalRandom.current().nextInt(0, 91);
 				int newDogThirst = ThreadLocalRandom.current().nextInt(0, 91);
 				int newDogBoredom = ThreadLocalRandom.current().nextInt(0, 91);
-				VirtualPet petNew = new VirtualPet(newDogName, newDogDescription, newDogHunger, newDogThirst, newDogBoredom);
+				VirtualPet petNew = new VirtualPet(newDogNameFormatted, newDogDescription, newDogHunger, newDogThirst, newDogBoredom);
 				myShelter.addPet(petNew);
 				System.out.println(petNew.getName() + " is a new dog in the shelter.");
 				myShelter.tickAllPets();

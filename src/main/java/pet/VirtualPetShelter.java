@@ -7,7 +7,7 @@ import java.util.Map;
 public class VirtualPetShelter {
 
 	Map<String, VirtualPet> pets = new HashMap<String, VirtualPet>();
-		
+
 	public void addPet(VirtualPet pet) {
 		pets.put(pet.getName(), pet);
 	}
@@ -15,12 +15,20 @@ public class VirtualPetShelter {
 	public VirtualPet findPet(String petName) {
 		return pets.get(petName);
 	}
+	
+	public String formatPetName(String originalName) {
+		String lowerCasePetName = originalName.toLowerCase();
+		String firstLetter = lowerCasePetName.substring(0, 1);
+		firstLetter = firstLetter.toUpperCase();
+		String restOfName = lowerCasePetName.substring(1);
+		return firstLetter + restOfName;
+	}
 
 	public Collection<VirtualPet> getAllPets() {
 		return pets.values();
 	}
 
-	public void removePet(VirtualPet pet) {
+	public void adoptPet(VirtualPet pet) {
 		pets.remove(pet.getName(), pet);
 	}
 
@@ -48,9 +56,8 @@ public class VirtualPetShelter {
 		for (VirtualPet pet : allPets) {
 			pet.tick();
 		}
-
 	}
-	
+
 	public void showPetStats() {
 		Collection<VirtualPet> allPets = pets.values();
 		System.out.println("This is the status of your dogs:");

@@ -43,7 +43,7 @@ public class VirtualPetShelterTest {
 	@Test
 	public void shouldBeAbleToRemovePet() {
 		underTest.addPet(pet1);
-		underTest.removePet(pet1);
+		underTest.adoptPet(pet1);
 		VirtualPet retrievedPet = underTest.findPet(pet1.getName());
 		assertThat(retrievedPet, is(nullValue()));
 	}

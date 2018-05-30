@@ -8,10 +8,10 @@ public class VirtualPet {
 	private String description;
 	private int hunger;
 	private int hungerIncrease = 5;
-	private int hungerMultiplier = ThreadLocalRandom.current().nextInt(1, 4);
+	private int hungerMultiplier = ThreadLocalRandom.current().nextInt(1, 5);
 	private int thirst;
 	private int thirstIncrease = 4;
-	private int thirstMultiplier = ThreadLocalRandom.current().nextInt(1, 4);
+	private int thirstMultiplier = ThreadLocalRandom.current().nextInt(1, 5);
 	private int boredom;
 	private int boredomIncrease = 3;
 	private int boredomMultiplier = ThreadLocalRandom.current().nextInt(1, 5);
